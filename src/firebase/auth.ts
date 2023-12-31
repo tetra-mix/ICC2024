@@ -1,18 +1,7 @@
-import { initializeApp } from 'firebase/app';
-import { createUserWithEmailAndPassword , onAuthStateChanged, getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword , onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {auth} from './config';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBqdbnsK-zmo0rJiIK7byPmerU0meuoPC8",
-    authDomain: "test-project-bdc7f.firebaseapp.com",
-    projectId: "test-project-bdc7f",
-    storageBucket: "test-project-bdc7f.appspot.com",
-    messagingSenderId: "929946583943",
-    appId: "1:929946583943:web:5edbcb76294e5ede5f0922"
-};
-
-const app = initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
-const auth = getAuth(app);
 
 export const login_email = async (email: string, password: string) => {
   try {
