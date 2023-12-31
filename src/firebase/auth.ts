@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword , onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import {auth} from './config';
+import { uploadUserData } from './user';
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -24,6 +25,8 @@ export const login_google = async () => {
 export const register = async (email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    uploadUserData(userCredential.user, {name: "名前", product_id: [], rating: [], kind: "", description: ""})
+    
     return userCredential.user;
   } catch (error) {
     throw error;
@@ -38,6 +41,7 @@ export const AuthState = (callback: (user: any) => void) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // ユーザーがログインしている
+      console.log(user);
       callback(user);
     } else {
       // ユーザーがログアウトしている

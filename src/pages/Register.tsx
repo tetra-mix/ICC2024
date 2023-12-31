@@ -84,14 +84,6 @@ const Register: React.FC = () => {
                         新規登録登録
                     </Button>
                 </Box>
-                <Typography component="h1" variant="h5">
-                    その他の新規登録
-                </Typography>
-                <Box>
-                    <Button onClick={handleGoogleLogin} variant="contained">
-                        Googleで新規登録
-                    </Button>
-                </Box>
             </Box>
         </Container>
     );

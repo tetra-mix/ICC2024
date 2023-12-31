@@ -84,14 +84,6 @@ const Login: React.FC = () => {
                         ログイン
                     </Button>
                 </Box>
-                <Typography component="h1" variant="h5">
-                    その他のログイン
-                </Typography>
-                <Box>
-                    <Button onClick={handleGoogleLogin} variant="contained">
-                        Googleでログイン
-                    </Button>
-                </Box>
             </Box>
         </Container>
     );
