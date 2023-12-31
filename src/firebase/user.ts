@@ -18,9 +18,10 @@ export const uploadUserData = async (currentuser: User, data: user) => {
 }
 
 export const getUserData = async (currentuser: User) => {
-    const data = await getDoc(doc(db, "users", currentuser.uid));
+    const docRef = doc(db, "users", currentuser.uid);
+    const data = await getDoc(docRef);
     console.log(data);
-    return data;
+    return data.data();
 }
 
 export const updateUserData = async (currentuser: User, data: user) => {
