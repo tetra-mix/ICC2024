@@ -1,6 +1,6 @@
 import { db, storage } from './config';
 import { doc, setDoc } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import {  ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 interface Product {
     title: string;

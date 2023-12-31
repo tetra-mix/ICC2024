@@ -6,7 +6,6 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { uploadImageToStorage } from '../firebase/strorage';
 
 export default function Top() {
@@ -16,7 +15,6 @@ export default function Top() {
     const [kind, setKind] = React.useState<string>();
     const [description, setDescription] = React.useState<string>();
 
-    const navigate = useNavigate();
 
     const RegisterClicked = () => 
     {
