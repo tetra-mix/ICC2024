@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword , onAuthStateChanged, getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBqdbnsK-zmo0rJiIK7byPmerU0meuoPC8",
@@ -11,9 +11,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
-export const login = async (email: string, password: string) => {
+export const login_email = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
@@ -22,6 +23,36 @@ export const login = async (email: string, password: string) => {
   }
 };
 
+export const login_google = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    return result.user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const register = async (email: string, password: string) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const logout = async () => {
   await signOut(auth);
+};
+
+export const AuthState = (callback: (user: any) => void) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // ユーザーがログインしている
+      callback(user);
+    } else {
+      // ユーザーがログアウトしている
+      callback(null);
+    }
+  });
 };
