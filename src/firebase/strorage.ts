@@ -1,8 +1,8 @@
 import { db, storage } from './config';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage';
+import { doc, setDoc, getDoc, getDocs, collection } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-interface Product {
+export interface Product {
   title: string;
   price: number;
   kind: string;
@@ -36,6 +36,13 @@ export const getProductData = async (docId: string) => {
     console.error('No such document!');
     throw new Error('Document not found');
   }
+}
+
+export const getAllProducts = async () => {
+  const collectionRef = collection(db, "products");
+  const collectionSnapshot = await getDocs(collectionRef);
+  const docs = collectionSnapshot.docs.map(doc => doc.data());
+  return docs;
 }
 
 export const getProductImage = async (title: string) => {
