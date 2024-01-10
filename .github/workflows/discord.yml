@@ -19,9 +19,8 @@ jobs:
         color: "#48f442"
         username: "GitHub Bot"
         args: 
-          The ${{ github.event_name }} event triggered.
-          with ${{ github.event.head_commit.message }},
-          by ${{ github.actor }} on ${{ github.repository }}.
-          
-          https://github.com/tetra-mix/business_frontend/tree/dev-ryoma.
-
+          event_name; ${{ github.event_name }}.
+          message   ; ${{ github.event.head_commit.message }},
+          user name ; ${{ github.actor }}
+          repository; ${{ github.repository }}.
+          url       ; https://github.com/tetra-mix/business_frontend/tree/dev-ryoma.
