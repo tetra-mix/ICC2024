@@ -19,8 +19,8 @@ jobs:
         color: "#48f442"
         username: "GitHub Bot"
         args: 
-          event_name; ${{ github.event_name }}.
-          message   ; ${{ github.event.head_commit.message }},
-          user name ; ${{ github.actor }}
-          repository; ${{ github.repository }}.
-          url       ; https://github.com/tetra-mix/business_frontend/tree/dev-ryoma.
+          "event_name; ${{ github.event_name }}.\n
+          message   ; ${{ github.event.head_commit.message }},\n
+          user name ; ${{ github.actor }}\n
+          repository; ${{ github.repository }}.\n
+          url       ; https://github.com/tetra-mix/business_frontend/tree/dev-ryoma.\n"
