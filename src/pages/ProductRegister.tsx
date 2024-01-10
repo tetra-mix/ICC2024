@@ -18,6 +18,7 @@ export default function Top() {
 
     const RegisterClicked = () => 
     {
+        console.log(file, title, price, kind, description);
         if (file && title && price && kind && description) {
             try {
               uploadImageToStorage(file, { title, price, kind, description });
