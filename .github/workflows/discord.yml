@@ -22,3 +22,6 @@ jobs:
           The ${{ github.event_name }} event triggered.
           with ${{ github.event.head_commit.message }},
           by ${{ github.actor }} on ${{ github.repository }}.
+          
+          https://github.com/tetra-mix/business_frontend/tree/dev-ryoma.
+
