@@ -12,10 +12,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@firebase/app-types": "^0.9.0",
     "@headlessui/react": "^2.0.0-alpha.3",
     "@mui/icons-material": "^5.15.1",
     "@mui/material": "^5.15.1",
     "@mui/styled-engine-sc": "^6.0.0-alpha.9",
+    "@types/firebase": "^3.2.1",
+    "firebase": "^10.7.1",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
