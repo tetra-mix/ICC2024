@@ -6,16 +6,16 @@ function App() {
     <>
       <section className="border flex p-3 justify-around items-center bg-tea-500">
         <h1 className="text-4xl font-bold text-white">
-          [サービス名]
+          [TEA茶er]
         </h1>
         <div>
-          <button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button>
+          <a href="./pages/Login"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button></a>
           <button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 ml-2">新規登録</button>
         </div>
       </section>
       <section className="flex flex-row p-10 bg-tea-10">
         <div className="basis-1/2">
-          <h2 className="text-black text-lg md:text-3xl">新たなお茶に出会える<br />レコメンドサービス「サービス名」</h2>
+          <h2 className="text-black text-lg md:text-3xl">新たなお茶に出会える<br />レコメンドサービス「TEA茶er」</h2>
         </div>
         <div className="basis-1/4"></div>
         <div className="basis-1/4"></div>
