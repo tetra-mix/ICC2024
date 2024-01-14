@@ -25,7 +25,7 @@ export const login_google = async () => {
 export const register = async (name: string, email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    uploadUserData(userCredential.user, {name: name, product_rate: []} )
+    uploadUserData(userCredential.user, {id: 1, name: name, wants: [], bought: [], answered: []} )
     
     return userCredential.user;
   } catch (error) {

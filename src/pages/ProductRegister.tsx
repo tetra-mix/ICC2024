@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import { uploadImageToStorage } from '../firebase/strorage';
+import { product } from "../types/products";
 
 export default function Top() {
     const [file, setFile] = React.useState<File | null>(null);
@@ -18,9 +19,26 @@ export default function Top() {
 
     const RegisterClicked = () => {
         console.log(file, title, price, kind, description);
+        
         if (file && title && price && kind && description) {
+
+            const product:product = {
+                id: 1,
+                title: title,
+                kind: kind,
+                price: price,
+                description: description,
+                questionnaire: [],
+                data: {
+                    small: 0,
+                    taste: 0,
+                    feel: 0,
+                    when: 0
+                }
+            };
+
             try {
-                uploadImageToStorage(file, { title, price, kind, description });
+                uploadImageToStorage(file, product);
                 console.log("商品がアップロードされました。");
                 alert("商品がアップロードされました。");
             } catch (error) {

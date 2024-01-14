@@ -6,7 +6,6 @@ export type product = {
     kind: string;
     price: number;
     description: string;
-    imageURL: string;
     questionnaire: questionnaire[];
     data: {
         small: number;
@@ -14,4 +13,5 @@ export type product = {
         feel: number;
         when: number;
     }
+    // imageURL: string; // storage.tsで追加
 }
