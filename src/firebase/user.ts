@@ -2,12 +2,17 @@ import { db } from './config';
 import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 
+interface product_rate {
+    product_id: string;
+    rating: number;
+}
+
 interface user {
     name: string;
-    product_id: string[];
-    rating: number[];
-    kind: string;
-    description: string;
+    product_rate: product_rate[];
+    question: {
+        
+    }
 }
 
 export const uploadUserData = async (currentuser: User, data: user) => {

@@ -16,25 +16,26 @@ export default function Top() {
     const [description, setDescription] = React.useState<string>();
 
 
-    const RegisterClicked = () => 
-    {
+    const RegisterClicked = () => {
         console.log(file, title, price, kind, description);
         if (file && title && price && kind && description) {
             try {
-              uploadImageToStorage(file, { title, price, kind, description });
-              console.log("商品がアップロードされました。");
+                uploadImageToStorage(file, { title, price, kind, description });
+                console.log("商品がアップロードされました。");
+                alert("商品がアップロードされました。");
             } catch (error) {
-              console.error("アップロードエラー: ", error);
+                console.error("アップロードエラー: ", error);
+                alert("アップロードエラー: " + error);
             }
-          }
+        }
     }
-    
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-          setFile(e.target.files[0]);
+            setFile(e.target.files[0]);
         }
-      };
-    
+    };
+
     return (
         <>
             <AppBar position="static" sx={{ width: '100%', height: '10%' }}>

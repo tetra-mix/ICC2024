@@ -9,12 +9,13 @@ import Container from '@mui/material/Container';
 
 const Register: React.FC = () => {
     const [email, setEmail] = useState<string>('');
+    const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            await register(email, password);
+            await register(name, email, password);
             alert('ログイン成功');
             navigate('/');
             // ログイン成功時の処理
@@ -46,9 +47,22 @@ const Register: React.FC = () => {
                 }}
             >
                 <Typography component="h1" variant="h5">
-                    新規登録 
+                    新規登録
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="ニックネーム/名前"
+                        name="name"
+                        autoComplete="name"
+                        autoFocus
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
                     <TextField
                         variant="outlined"
                         margin="normal"

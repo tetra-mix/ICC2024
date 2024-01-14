@@ -22,10 +22,10 @@ export const login_google = async () => {
   }
 };
 
-export const register = async (email: string, password: string) => {
+export const register = async (name: string, email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    uploadUserData(userCredential.user, {name: "名前", product_id: [], rating: [], kind: "", description: ""})
+    uploadUserData(userCredential.user, {name: name, product_rate: []} )
     
     return userCredential.user;
   } catch (error) {
