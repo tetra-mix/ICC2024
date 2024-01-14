@@ -3,4 +3,5 @@ export type questionnaire = {
     taste: number[];
     feel: number[];
     health: number[];
+    comment: string[];
 };
