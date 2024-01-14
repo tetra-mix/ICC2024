@@ -19,11 +19,18 @@ export default function Top() {
 
     const RegisterClicked = () => {
         console.log(file, title, price, kind, description);
-        
+        let d = new Date()
+        let year = d.getFullYear();
+        let month = d.getMonth();
+        let day = d.getDate();
+        let sec = d.getSeconds();
+        let msec = d.getMilliseconds();
+        let id: number = Number(String(year) + String(month) + String(day) + String(sec) + String(msec))
+
         if (file && title && price && kind && description) {
 
-            const product:product = {
-                id: 1,
+            const product: product = {
+                id: id,
                 title: title,
                 kind: kind,
                 price: price,
