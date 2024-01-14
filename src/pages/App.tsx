@@ -11,6 +11,7 @@ function App() {
         <div>
           <a href="/Login"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button></a>
           <button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 ml-2">新規登録</button>
+          <a href="/PostKuchikomi"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 ml-2">口コミを投稿</button></a>
         </div>
       </section>
       <section className="flex flex-row p-10 bg-tea-10">
