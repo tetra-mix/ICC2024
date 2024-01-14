@@ -27,7 +27,7 @@ export async function getDocIDbyUser(user_id: number): Promise<string | null> {
 
 export async function getDocsbyProductData_increasing(what: string) {
     const collectionRef = collection(db, "products");
-    const q = query(collectionRef, orderBy(what));
+    const q = query(collectionRef, orderBy("data." + what));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
         return querySnapshot.docs; //配列
@@ -38,7 +38,7 @@ export async function getDocsbyProductData_increasing(what: string) {
 
 export async function getDocsbyProductData_only(what: string, number: number) {
     const collectionRef = collection(db, "products");
-    const q = query(collectionRef, where(what, "==", number));
+    const q = query(collectionRef, where("data." + what, "==", number));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
         return querySnapshot.docs; //配列
