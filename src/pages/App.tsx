@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import ShowKuchikomi from './ShowKuchikomi'
+import Ranking from './Ranking'
 import styles from './app.module.scss'
 
 function App() {
@@ -52,9 +53,11 @@ function App() {
       <section className="flex flex-row p-3">
         <h3 className={styles.title}>口コミ</h3>
       </section>
+      <ShowKuchikomi />
       <section className="flex flex-row p-3">
         <h3 className={styles.title}>ランキング</h3>
       </section>
+      <Ranking />
     </>
   )
 }

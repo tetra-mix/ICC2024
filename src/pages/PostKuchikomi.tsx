@@ -15,12 +15,13 @@ function PostKuchikomi() {
                 <input className="border-2 border-tea-100 rounded-md w-3/4" type="text" /><br />
             </div>
             <h3 className={styles.content}>香り</h3>
+            <p className={styles.center}>苦い　　　　　　　　　　　　　　　　旨い</p>
             <div className={styles.center}>
-                <button className={styles.button}>a</button>
-                <button className={styles.button}>a</button>  
-                <button className={styles.button}>a</button>  
-                <button className={styles.button}>a</button>  
-                <button className={styles.button}>a</button> 
+                <button className={styles.button}>1</button>
+                <button className={styles.button}>2</button>  
+                <button className={styles.button}>3</button>  
+                <button className={styles.button}>4</button>  
+                <button className={styles.button}>5</button> 
             </div>
             <h3 className={styles.content}>味</h3>
             <div className={styles.center}>
@@ -35,7 +36,7 @@ function PostKuchikomi() {
                 <textarea className={styles.text} name="a"  cols={40} rows={5}></textarea>
             </div>
             <div className={styles.center}>
-                <a href="/App"><button className={styles.button}>投稿</button></a>
+                <a href="/"><button className={styles.button}>投稿</button></a>
             </div>
         </section>
         </>
