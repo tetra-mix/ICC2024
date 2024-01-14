@@ -46,3 +46,14 @@ export async function getDocsbyProductData_only(what: string, number: number) {
         return null;
     }
 }
+
+export async function getDocbyText(text: string) {
+    const collectionRef = collection(db, "products");
+    const q = query(collectionRef, where("title", "==", text));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+        return querySnapshot.docs; //配列
+    } else {
+        return null;
+    }
+}
