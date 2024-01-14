@@ -47,9 +47,9 @@ export async function getDocsbyProductData_only(what: string, number: number) {
     }
 }
 
-export async function getDocbyText(text: string) {
+export async function getDocsbyString(what: string, text: string) {
     const collectionRef = collection(db, "products");
-    const q = query(collectionRef, where("title", "==", text));
+    const q = query(collectionRef, where(what, "==", text));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
         return querySnapshot.docs; //配列
