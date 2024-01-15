@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ProductTag } from '../components/product_tag'
-import { AuthState, logout } from '../firebase/auth'
-import styles from './app.module.scss'
+import { ProductTag } from '../components/product_tag';
+import { AuthState, logout } from '../firebase/auth';
+import styles from './app.module.scss';
 
 function Products () {
 

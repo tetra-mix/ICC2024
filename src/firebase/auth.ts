@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword , onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import {auth} from './config';
+import { createUserWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { auth } from './config';
 import { uploadUserData } from './user';
 
 const googleProvider = new GoogleAuthProvider();
@@ -22,11 +22,19 @@ export const login_google = async () => {
   }
 };
 
-export const register = async (email: string, password: string) => {
+export const register = async (name: string, email: string, password: string) => {
+  let d = new Date()
+  let year = d.getFullYear();
+  let month = d.getMonth();
+  let day = d.getDate();
+  let sec = d.getSeconds();
+  let msec = d.getMilliseconds();
+  let id:number =Number( String(year) + String(month) + String(day) + String(sec) + String(msec) )
+
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    uploadUserData(userCredential.user, {name: "名前", product_id: [], rating: [], kind: "", description: ""})
-    
+    uploadUserData(userCredential.user, { id: id, name: name, wants: [], bought: [], answered: [] })
+
     return userCredential.user;
   } catch (error) {
     throw error;

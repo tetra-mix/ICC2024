@@ -1,16 +1,11 @@
 import { db, storage } from './config';
 import { doc, setDoc, getDoc, getDocs, collection } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { product } from '../types/products';
 
-export interface Product {
-  title: string;
-  price: number;
-  kind: string;
-  description: string;
-}
 
 // 画像をStorageにアップロードする関数
-export const uploadImageToStorage = async (file: File, data: Product): Promise<void> => {
+export const uploadImageToStorage = async (file: File, data: product): Promise<void> => {
   if (!file) throw new Error("ファイルが見つかりません。");
 
   // 画像をStorageにアップロードする

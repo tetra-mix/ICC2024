@@ -2,13 +2,7 @@ import { db } from './config';
 import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 
-interface user {
-    name: string;
-    product_id: string[];
-    rating: number[];
-    kind: string;
-    description: string;
-}
+import { user } from '../types/user';
 
 export const uploadUserData = async (currentuser: User, data: user) => {
     const userRef = doc(db, "users", currentuser.uid);
