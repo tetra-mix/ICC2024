@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ProductTag } from '../components/product_tag';
+import { ProductTag } from '../components/Product_tag';
 import { AuthState, logout } from '../firebase/auth';
 import styles from './app.module.scss';
 
@@ -19,7 +19,7 @@ function Products () {
 
     return (
         <>
-            <section className="border flex p-3 justify-around items-center bg-tea-500">
+            <section className="border flex p-3 justify-around items-center bg-tea-600">
                 <h1 className="text-4xl font-bold text-white">
                     [サービス名]
                 </h1>
@@ -41,7 +41,7 @@ function Products () {
             </section>
             <section className="flex flex-row p-3">
                 <h3 className={styles.title}>商品一覧</h3>
-                <ProductTag />
+                             <ProductTag />
             </section>
         </>
     );

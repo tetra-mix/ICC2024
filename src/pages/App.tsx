@@ -1,14 +1,34 @@
-import ShowKuchikomi from './ShowKuchikomi'
-import Ranking from './Ranking'
 import styles from './app.module.scss'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthState } from '../firebase/auth';
+import { ProductTag } from "../components/Product_tag";
 
 function App() {
+  const navigate = useNavigate()
+
+  const [currentUser, setCurrentUser] = useState(null)
+
+  useEffect(() => {
+    const unsubscribe = AuthState((user) => {
+      setCurrentUser(user);
+    });
+    return () => { unsubscribe; };
+  }, [])
+
+
   return (
     <>
-      <section className="border flex p-3 justify-around items-center bg-tea-500">
-        <h1 className="text-4xl font-bold text-white">
-          TEA茶er
-        </h1>
+      <section className="border flex p-3 justify-around items-center bg-tea-600">
+
+        <img className='size-2/5' src="/logo.png"></img>
+        {
+          /*
+          <h1 className="text-4xl font-bold text-white">
+            TEA茶er
+          </h1>
+          */
+        }
         <div>
           <a href="/Login"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button></a>
           <button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 ml-2">新規登録</button>
@@ -16,11 +36,12 @@ function App() {
         </div>
       </section>
       <section className="flex flex-row p-10 bg-tea-10">
-        <div className="basis-1/2">
+        <div className="basis-2/3">
           <h2 className="text-black text-lg md:text-3xl">新たなお茶に出会える<br />レコメンドサービス「TEA茶er」</h2>
         </div>
-        <div className="basis-1/4"></div>
-        <div className="basis-1/4"></div>
+        <div className="basis-1/3">
+          <img className="" src="/icon.png"></img>
+        </div>
       </section>
       <section className="">
         <div className="p-8 border">
@@ -50,6 +71,14 @@ function App() {
           <button className="bg-tea-100 text-black border-0 rounded-md hover:bg-tea-300 hover:text-white p-2 ml-2">登録へ進む</button>
         </div>
       </section>
+      <section>
+        <h3 className={styles.title}>商品一覧</h3>
+        {
+          currentUser && 
+            <ProductTag/>
+        }
+      </section>
+      { /*
       <section className="flex flex-row p-3">
         <h3 className={styles.title}>口コミ</h3>
       </section>
@@ -58,6 +87,8 @@ function App() {
         <h3 className={styles.title}>ランキング</h3>
       </section>
       <Ranking />
+      */
+      }
     </>
   )
 }
