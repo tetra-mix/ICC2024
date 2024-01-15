@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login_email, login_google } from '../firebase/auth';
+import { login_email, /*login_google*/ } from '../firebase/auth';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -23,7 +23,7 @@ const Login: React.FC = () => {
             alert(error);
         }
     };
-
+    /*
     const handleGoogleLogin = async () => {
         try {
             await login_google();
@@ -34,6 +34,7 @@ const Login: React.FC = () => {
             alert(error);
         }
     };
+    */
 
     return (
         <Container component="main" maxWidth="xs">

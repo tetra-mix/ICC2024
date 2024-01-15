@@ -7,7 +7,7 @@ function App() {
     <>
       <section className="border flex p-3 justify-around items-center bg-tea-500">
         <h1 className="text-4xl font-bold text-white">
-          [TEA茶er]
+          TEA茶er
         </h1>
         <div>
           <a href="/Login"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button></a>

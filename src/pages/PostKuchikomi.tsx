@@ -15,7 +15,7 @@ function PostKuchikomi() {
                 <input className="border-2 border-tea-100 rounded-md w-3/4" type="text" /><br />
             </div>
             <h3 className={styles.content}>香り</h3>
-            <p className={styles.center}>苦い　　　　　　　　　　　　　　　　旨い</p>
+            <p className={styles.center}>苦い旨い</p>
             <div className={styles.center}>
                 <button className={styles.button}>1</button>
                 <button className={styles.button}>2</button>  

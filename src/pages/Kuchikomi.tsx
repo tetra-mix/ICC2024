@@ -1,4 +1,4 @@
-function Kuchikomi() {
+export default function Kuchikomi() {
     return(
         <>
         <section className="border flex p-3 justify-around items-center bg-tea-500">
