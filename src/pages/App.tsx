@@ -1,45 +1,23 @@
-import React, {useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
-import { AuthState, logout } from '../firebase/auth'
+import ShowKuchikomi from './ShowKuchikomi'
+import Ranking from './Ranking'
 import styles from './app.module.scss'
 
 function App() {
-  const navigate = useNavigate()
-  
-  const [currentUser, setCurrentUser] = useState(null)
-  
-  useEffect(() => {
-    const unsubscribe = AuthState((user) => {
-      setCurrentUser(user);
-    });
-    return () => { unsubscribe; };
-  }, [])
-  
   return (
     <>
       <section className="border flex p-3 justify-around items-center bg-tea-500">
         <h1 className="text-4xl font-bold text-white">
-          [サービス名]
+          [TEA茶er]
         </h1>
         <div>
-          {
-            currentUser
-            ?
-            <>
-              <button onClick={() => {navigate('/account')}} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">アカウント</button>
-              <button onClick={() => {logout(); alert("ログアウトしました。"); }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログアウト</button>
-            </>
-            :
-            <>
-              <button onClick={() => {navigate('/login')}} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button>
-              <button onClick={() => {navigate('/register')}} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">新規登録</button>   
-            </>
-            }
+          <a href="/Login"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button></a>
+          <button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 ml-2">新規登録</button>
+          <a href="/PostKuchikomi"><button className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 ml-2">口コミを投稿</button></a>
         </div>
       </section>
       <section className="flex flex-row p-10 bg-tea-10">
         <div className="basis-1/2">
-          <h2 className="text-black text-lg md:text-3xl">新たなお茶に出会える<br />レコメンドサービス「サービス名」</h2>
+          <h2 className="text-black text-lg md:text-3xl">新たなお茶に出会える<br />レコメンドサービス「TEA茶er」</h2>
         </div>
         <div className="basis-1/4"></div>
         <div className="basis-1/4"></div>
@@ -75,9 +53,11 @@ function App() {
       <section className="flex flex-row p-3">
         <h3 className={styles.title}>口コミ</h3>
       </section>
+      <ShowKuchikomi />
       <section className="flex flex-row p-3">
         <h3 className={styles.title}>ランキング</h3>
       </section>
+      <Ranking />
     </>
   )
 }
