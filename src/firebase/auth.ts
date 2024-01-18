@@ -45,11 +45,11 @@ export const logout = async () => {
   await signOut(auth);
 };
 
+
 export const AuthState = (callback: (user: any) => void) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // ユーザーがログインしている
-      console.log(user);
       callback(user);
     } else {
       // ユーザーがログアウトしている

@@ -98,6 +98,15 @@ const Register: React.FC = () => {
                     >
                         新規登録登録
                     </Button>
+                    <Button
+                        type="button"
+                        onClick={() => navigate('/')}
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        もとのページに戻る
+                    </Button>
                 </Box>
             </Box>
         </Container>

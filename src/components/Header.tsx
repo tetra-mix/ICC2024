@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ProductTag } from '../components/Product_tag';
 import { AuthState, logout } from '../firebase/auth';
-import styles from './app.module.scss';
+
 
 function Header() {
 
@@ -18,10 +17,8 @@ function Header() {
     }, [])
 
     return (
-        <section className="border flex p-3 justify-around items-center bg-tea-500">
-            <h1 className="text-4xl font-bold text-white">
-                [サービス名]
-            </h1>
+        <section className="border flex p-3 justify-around items-center bg-tea-600">
+            <img src="/logo.png" className="size-1/4" />
             <div>
                 {
                     currentUser

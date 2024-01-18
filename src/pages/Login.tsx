@@ -84,6 +84,15 @@ const Login: React.FC = () => {
                     >
                         ログイン
                     </Button>
+                    <Button
+                        type="button"
+                        onClick={() => navigate('/')}
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        もとのページに戻る
+                    </Button>
                 </Box>
             </Box>
         </Container>

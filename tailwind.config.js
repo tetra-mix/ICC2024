@@ -8,6 +8,7 @@ export default {
       colors: {
         tea: {
           10: '#e3fcec',
+          20: '#f5ffed',
           50: '#7efcac',
           100: '#b3cb9c',
           200: '#759450',
