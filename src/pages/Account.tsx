@@ -58,7 +58,7 @@ export default function Account() {
             <section className="p-10 bg-white">
                 <h3 className={styles.title}>お気に入りリスト</h3>
                 <div className="m-5 p-5s lg:text-2xl sm:text-lg">
-
+                    
                 </div>
                 <h3 className={styles.title}>購入リスト</h3>
                 <div className="m-5 p-5s lg:text-2xl sm:text-lg">
