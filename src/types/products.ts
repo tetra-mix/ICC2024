@@ -15,3 +15,19 @@ export type product = {
     }
     // imageURL: string; // storage.tsで追加
 }
+
+export type productI = {
+    id: number;
+    title: string;
+    kind: string;
+    price: number;
+    description: string;
+    questionnaire: questionnaire[];
+    data: {
+        small: number;
+        taste: number;
+        feel: number;
+        when: number;
+    }
+    imageURL: string;
+}

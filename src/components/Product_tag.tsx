@@ -1,9 +1,59 @@
+import { useEffect, useState } from 'react';
 import { getAllProducts } from '../firebase/strorage';
+import { productI } from '../types/products';
 
 export const ProductTag = () => {
-    const productslist = getAllProducts();
+    const [products, setProducts] = useState<productI[]>([]);
+
+    useEffect(() => {
+        const productslist = getAllProducts().then((ps) => {
+            ps.map((product: any) => {
+                const p =
+                {
+                    id: product.id,
+                    title: product.title,
+                    kind: product.kind,
+                    price: product.price,
+                    description: product.description,
+                    questionnaire: product.questionnaire,
+                    data: {
+                        small: product.data.small,
+                        taste: product.data.taste,
+                        feel: product.data.feel,
+                        when: product.data.when,
+                    },
+                    imageURL: product.imageURL,
+                };
+                const newProducts = products.concat(p);
+                
+                setProducts(newProducts);
+            });
+        });
+        return () => {
+            productslist;
+        }
+    }, [])
 
     return (
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4'>
+            {products.map((product) => (
+                <div className="rounded-md border-black m-2 p-5 bg-tea-20 border-2 border-tea-600">
+                    <h1 className="text-xl">商品名: <span className='text-2xl font-bold'>{product.title}</span></h1>
+                    <h3 className="text-lg">値段: {product.price}</h3>
+                    <h3 className="text-lg">種類: {product.kind}</h3>
+                    <img src={product.imageURL} />
+                    <h3 className="text-lg">説明:</h3>
+                    <p className="p-2">
+                        {product.description}
+                    </p>
+                </div >
+            ))}
+        </div>
+    );
+    
+    /*
+    return (
+        
         <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4'>
             <div className="rounded-md border-black m-2 p-5 bg-tea-20 border-2 border-tea-600">
                 <h1 className="text-xl">商品名: <span className='text-2xl font-bold'>伊勢茶</span></h1>
@@ -37,5 +87,5 @@ export const ProductTag = () => {
             </div >
         </div>
     );
-
+        */
 }
