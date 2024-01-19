@@ -1,5 +1,4 @@
 import styles from "./Questionnaire.module.scss"
-import Header from "../components/Header"
 import { useState, useEffect } from "react";
 import { product } from "../types/products";
 
@@ -10,6 +9,8 @@ function Questionnaire(props: { product: product }) {
     const [feel, setFeel] = useState(0);
     const [other, setOther] = useState("");
     const [boolConplete, setBoolConlete] = useState(false);
+
+    console.log(product);
 
     useEffect(() => {
         if (taste && smell && feel) {

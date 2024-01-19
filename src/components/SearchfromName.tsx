@@ -15,7 +15,7 @@ export default function SearchfromFeel() {
                 </div>
             </div>
             <div className="w-full">
-                <button className="bg-tea-100 w-12 md:w-full text-black border-0 rounded-md hover:bg-tea-300 hover:text-white p-2 ml-2">検索</button>
+                <button onClick={handleClick} className="bg-tea-100 w-12 md:w-full text-black border-0 rounded-md hover:bg-tea-300 hover:text-white p-2 ml-2">検索</button>
             </div>
         </div>
 

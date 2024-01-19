@@ -20,10 +20,6 @@ export default function SearchfromTaste() {
     setBoolBox(false);
   }
 
-  const str = (nn: nn) => {
-    return "香り:" + nn.smell + ",味:" + nn.taste;
-  }
-
   return (
     <div className='grid grid-cols-4 sm:gap-4 '>
       <div className="col-span-3">
