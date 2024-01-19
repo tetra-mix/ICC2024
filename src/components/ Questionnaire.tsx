@@ -1,8 +1,8 @@
-import styles from "./Questionnaire.module.scss"
+import styles from "../scss/Questionnaire.module.scss"
 import { useState, useEffect } from "react";
-import { product } from "../types/products";
+import { productI } from "../types/products";
 
-function Questionnaire(props: { product: product }) {
+function Questionnaire(props: { product: productI }) {
     const product = props.product;
     const [smell, setSmell] = useState(0);
     const [taste, setTaste] = useState(0);
@@ -17,6 +17,10 @@ function Questionnaire(props: { product: product }) {
             setBoolConlete(true);
         }
     }, [taste, smell, feel, other]);
+
+    const submit = () => {
+        
+    }
 
     return (
         <>
@@ -68,11 +72,11 @@ function Questionnaire(props: { product: product }) {
                     </div>
                 </div>
                 <div className="pb-10">
-                    <h3 className="text-2xl">・その他の場面や気分のときに飲みたいと思った方は記述してください。</h3>
+                    <h3 className="text-2xl">コメントを記入してください。</h3>
                     <input onChange={(e) => { setOther(e.target.value); }} className="border-2 border-tea-100 rounded-md w-full md:w-1/2" type="text" />
                 </div>
                 <div className={styles.center}>
-                    <button className={`w-24 text-black border-0 rounded-md p-2 ml-2 ${boolConplete == true ? "bg-tea-400 text-white hover:bg-tea-300 hover:text-white " : "bg-gray-100 "} `}>完了</button>
+                    <button onClick={submit} className={`w-24 text-black border-0 rounded-md p-2 ml-2 ${boolConplete == true ? "bg-tea-400 text-white hover:bg-tea-300 hover:text-white " : "bg-gray-100 "} `}>送信</button>
                 </div>
             </section>
         </>

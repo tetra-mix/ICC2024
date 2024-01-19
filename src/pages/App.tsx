@@ -1,4 +1,4 @@
-import styles from './app.module.scss'
+import styles from '../scss/app.module.scss'
 import { ProductTag } from "../components/Product_tag";
 import Header from "../components/Header";
 import SearchfromName from '../components/SearchfromName';

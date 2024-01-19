@@ -1,12 +1,21 @@
-import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { useEffect} from 'react';
-
+import styles from '../scss/app.module.scss'
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { AuthState } from '../firebase/auth';
 import Header from '../components/Header';
-import Questionnaire from './ Questionnaire';
+import Questionnaire from '../components/ Questionnaire';
+import { getUserData } from '../firebase/user';
+import { updataUser } from '../firebase/evaluate';
+import { User } from 'firebase/auth';
+import { DocumentData } from 'firebase/firestore';
 import { productI } from "../types/products";
-
+import { user } from "../types/user";
 
 function Product() {
+    const [boolBought, setBoolBought] = useState(false);
+    const [boolWant, setBoolWant] = useState(false);
+    const [currentUser, setCurrentUser] = useState<User>()
+    const [userData, setUserData] = useState<DocumentData | null>(null)
     const navigate = useNavigate();
     const location = useLocation();
     const { product } = location.state;
@@ -30,14 +39,82 @@ function Product() {
     }
 
     useEffect(() => {
+        const unsubscribe = AuthState((user) => {
+            setCurrentUser(user);
+        });
+        return () => {
+            unsubscribe;
+        }
+    }, [])
+
+    useEffect(() => {
+        if (currentUser) {
+            getUserData(currentUser).then((data) => {
+                if (data)
+                    setUserData(data);
+                console.log(data);
+            });
+        }
+    }, [currentUser])
+
+    useEffect(() => {
         if (product == undefined)
             navigate("/error");
     }, [product]);
+
+    useEffect(() => {
+        let data: user = {
+            id: userData?.id,
+            name: userData?.name,
+            wants: userData?.wants,
+            bought: userData?.bought,
+            answered: userData?.answered,
+        }
+
+        if(boolBought == true && (data.bought.includes(p.id) == false))
+        {
+            data.bought.push(p.id);
+        }else{
+
+        }
+
+        if(boolWant == true && (data.bought.includes(p.id) == false))
+        {
+            data.wants.push(p.id);
+        }else{
+
+        }
+
+        console.log(data);
+        updataUser(data);
+    }, [boolBought, boolWant]);
+    
+
+    const handleBought = () => {
+        if (boolBought == false) {
+            setBoolBought(true);
+            
+        } else {
+            setBoolBought(false);
+        }
+    }
+
+    const handleWant = () => {
+        if (boolWant == false) {
+            setBoolWant(true);
+        }
+        else {
+            setBoolWant(false);
+        }
+    }
 
     return (
         <>
             <Header />
             <section>
+                <div className='p-10'>
+                    <h2 className={styles.title}>商品情報</h2>
+                </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <img src={p.imageURL} />
@@ -53,14 +130,26 @@ function Product() {
                             </p>
                         </div>
                         <div className='basis-1/3'>
-                            <Link to="/" className="center text-black border-0 rounded-md p-2 ml-2 bg-tea-100 text-white hover:bg-tea-300 hover:text-white">
-                                トップページに戻る
-                            </Link>
+                            <div className='m-3'>
+                                <button onClick={handleWant} className={`center text-black border-0 rounded-md p-2 ml-2 bg-tea-100 text-white hover:bg-tea-300 hover:text-white ${boolWant == true ? "bg-tea-400 text-white" : ""} `}>
+                                    欲しい物リストに追加
+                                </button>
+                            </div>
+                            <div className='m-3'>
+                                <button onClick={handleBought} className={`center text-black border-0 rounded-md p-2 ml-2 bg-tea-100 text-white hover:bg-tea-300 hover:text-white ${boolBought == true ? "bg-tea-400 text-white" : ""} `}>
+                                    購入済みにする
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <Questionnaire product={product} />
+            {
+                boolBought == true ?
+                    <Questionnaire product={product} />
+                    :
+                    <></>
+            }
         </>
     );
 }
