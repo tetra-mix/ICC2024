@@ -35,7 +35,14 @@ export default function Top() {
                 kind: kind,
                 price: price,
                 description: description,
-                questionnaire: [],
+                questionnaire: {
+                    small: [],
+                    taste: [],
+                    feel: [],
+                    health: [],
+                    comment: []
+                
+                },
                 data: {
                     small: 0,
                     taste: 0,

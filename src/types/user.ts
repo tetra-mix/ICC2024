@@ -1,6 +1,6 @@
 import { questionnaire } from "./questionnaire";
 
-type answered = {
+export type answered = {
     id: number; // product id
     questionnaire: questionnaire;
 }

@@ -30,16 +30,18 @@ export const ProductTag = () => {
                     imageURL: product.imageURL,
                 };
                 const newProducts = products.concat(p);
-                
+
+                console.log(products)
                 setProducts(newProducts);
             });
         });
+
         return () => {
             productslist;
         }
     }, [])
 
-    const handleClick = (product:productI) => {
+    const handleClick = (product: productI) => {
         navigate('/product', { state: { product: product } });
     }
 
@@ -47,7 +49,7 @@ export const ProductTag = () => {
     return (
         <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4'>
             {products.map((product) => (
-                <div onClick={() => {handleClick(product)} } className="rounded-md border-black m-2 p-5 bg-tea-20 border-2 border-tea-600">
+                <div onClick={() => { handleClick(product) }} className="rounded-md border-black m-2 p-5 bg-tea-20 border-2 border-tea-600">
                     <h1 className="text-xl">商品名: <span className='text-2xl font-bold'>{product.title}</span></h1>
                     <h3 className="text-lg">値段: {product.price} 円</h3>
                     <h3 className="text-lg">種類: {product.kind}</h3>
@@ -60,7 +62,7 @@ export const ProductTag = () => {
             ))}
         </div>
     );
-    
+
     /*
     return (
         

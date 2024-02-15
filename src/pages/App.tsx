@@ -16,7 +16,7 @@ function App() {
             新たなお茶に出会える<br />
             レコメンドサービス<br />
           </h1>
-          <p className="p-5 sm:p-10 text-3xl sm:text-5xl font-bold">「TEA茶er」</p>
+          <p className="p-5 sm:p-10 text-2xl sm:text-5xl font-bold">「TEA茶er」</p>
         </div>
         <div className="basis-1/3">
           <img className="w-48" src="/icon.png"></img>

@@ -7,7 +7,6 @@ import Questionnaire from '../components/ Questionnaire';
 import { getUserData } from '../firebase/user';
 import { updataUser } from '../firebase/evaluate';
 import { User } from 'firebase/auth';
-import { DocumentData } from 'firebase/firestore';
 import { productI } from "../types/products";
 import { user } from "../types/user";
 
@@ -15,7 +14,7 @@ function Product() {
     const [boolBought, setBoolBought] = useState(false);
     const [boolWant, setBoolWant] = useState(false);
     const [currentUser, setCurrentUser] = useState<User>()
-    const [userData, setUserData] = useState<DocumentData | null>(null)
+    const [userData, setUserData] = useState<user>()
     const navigate = useNavigate();
     const location = useLocation();
     const { product } = location.state;
@@ -50,9 +49,18 @@ function Product() {
     useEffect(() => {
         if (currentUser) {
             getUserData(currentUser).then((data) => {
-                if (data)
-                    setUserData(data);
-                console.log(data);
+                if (data) {
+                    let usr: user = {
+                        id: data?.id,
+                        name: data?.name,
+                        wants: data?.wants,
+                        bought: data?.bought,
+                        answered: data?.answered,
+                    };
+
+                    setUserData(usr);
+                    console.log(data);
+                }
             });
         }
     }, [currentUser])
@@ -63,37 +71,31 @@ function Product() {
     }, [product]);
 
     useEffect(() => {
-        let data: user = {
-            id: userData?.id,
-            name: userData?.name,
-            wants: userData?.wants,
-            bought: userData?.bought,
-            answered: userData?.answered,
+        if (userData != undefined) {
+            let data: user = userData;
+
+            if (boolBought == true && (data.bought.includes(p.id) == false)) {
+                data.bought.push(p.id);
+            } else {
+
+            }
+
+            if (boolWant == true && (data.bought.includes(p.id) == false)) {
+                data.wants.push(p.id);
+            } else {
+
+            }
+
+            console.log(data);
+            updataUser(data);
         }
-
-        if(boolBought == true && (data.bought.includes(p.id) == false))
-        {
-            data.bought.push(p.id);
-        }else{
-
-        }
-
-        if(boolWant == true && (data.bought.includes(p.id) == false))
-        {
-            data.wants.push(p.id);
-        }else{
-
-        }
-
-        console.log(data);
-        updataUser(data);
     }, [boolBought, boolWant]);
-    
+
 
     const handleBought = () => {
         if (boolBought == false) {
             setBoolBought(true);
-            
+
         } else {
             setBoolBought(false);
         }
@@ -146,7 +148,7 @@ function Product() {
             </section>
             {
                 boolBought == true ?
-                    <Questionnaire product={product} />
+                    <Questionnaire product={product} user={userData} />
                     :
                     <></>
             }
