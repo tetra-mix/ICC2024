@@ -1,17 +1,15 @@
 import styles from '../scss/app.module.scss'
-import Header from '../components/Header';
 import Base from '../components/Base';
 import { ProductTag } from "../components/Product_tag";
 import { useContext } from 'react';
 import { UserContext } from '../components/UserContext';
 
-function App() {
+function Top() {
 
   const { user } = useContext(UserContext);
 
   return (
     <>
-      <Header />
       <Base />
       <section className='m-10'>
         <h3 className={styles.title}>商品一覧</h3>
@@ -24,4 +22,4 @@ function App() {
   )
 }
 
-export default App
+export default Top

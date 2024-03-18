@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './pages/App.tsx'
+import Top from './pages/Top.tsx'
 import Login from './pages/user/Login.tsx'
 import Register from './pages/user/Register.tsx'
 import Account from './pages/user/Account.tsx'
@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <UserContext>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<Top />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/producst/tea" element={<TeaRegister />} />
