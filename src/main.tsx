@@ -24,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/producst/tea" element={<TeaRegister />} />
           <Route path="/products/sweets" element={<SweetsRegister />} />
           <Route path="/tea" element={<Tea />} />
+          <Route path="/tea" element={<Tea />} />
           <Route path="/sweets" element={<Sweets />} />
           <Route path="/account" element={<Account />} />
           <Route path="/error" element={<Error />} />

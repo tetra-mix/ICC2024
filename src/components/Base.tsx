@@ -5,7 +5,7 @@ import SearchfromFeel from './SearchfromFeel';
 import SearchfromTaste from './SearchfromTaste';
 
 
-export function Base() {
+export default function Base() {
   return (
     <>
       <Header />
