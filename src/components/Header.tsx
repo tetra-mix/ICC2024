@@ -2,15 +2,15 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../firebase/auth';
 import { UserContext } from './UserContext';
+import logo from '../assets/title_black.png'
 
 function Header() {
     const { user } = useContext(UserContext);
     const navigate = useNavigate()
     
-
     return (
         <section className="border flex p-3 justify-around items-center bg-tea-600">
-            <img src="/logo.png" className="size-1/4" />
+            <img src={logo} className="size-1/4" />
             <div>
                 {
                     user

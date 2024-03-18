@@ -1,72 +1,34 @@
 import Header from "../components/Header";
-import SearchfromName from './SearchfromName';
-import SearchfromGenre from './SearchfromGenre';
-import SearchfromFeel from './SearchfromFeel';
-import SearchfromTaste from './SearchfromTaste';
+import icon from "../assets/icon.png";
+import title from "../assets/title_black.png";
 
+type Props = {
+  text: string;
+  image_: boolean;
+  subtext?: string;
+}
 
-export default function Base() {
+export default function Base(props: Props) {
   return (
     <>
       <Header />
-      <section className="flex flex-row p-10 bg-tea-10">
-        <div className="basis-2/3">
-          <h1 className="text-black text-xl sm:text-3xl md:text-4xl">
-            新たなお茶に出会える<br />
-            レコメンドサービス<br />
+      <section className="flex flex-row p-5 bg-tea-100 items-end">
+        <div className="basis-1/2">
+          <img className="w-full max-w-96" src={icon}></img>
+        </div>
+        <div className="basis-2/2">
+          <h1 className="text-black text-xl font-bold sm:text-2xl md:text-5xl ">
+            {props.text}
           </h1>
-          <p className="p-5 sm:p-10 text-2xl sm:text-5xl font-bold">「TEA茶er」</p>
-        </div>
-        <div className="basis-1/3">
-          <img className="w-48" src="/icon.png"></img>
+          <p className="p-5 sm:p-10 text-sm">
+            {
+              props.image_ ?
+                <img src={title} className="w-full max-w-48"></img>
+                : props.subtext
+            }
+          </p>
         </div>
       </section>
-
-      {/*PC版の表示*/}
-      <section className="flex flex-row">
-        <div className="p-8 border basis-1/2 md:basis-full">
-          <h3 className="text-2xl md:text-3xl">名前から検索</h3>
-          <p>
-            お茶の品種名を入力して検索することができます。
-          </p>
-          <SearchfromName />
-        </div>
-        <div className='p-8 border basis-1/2 md:hidden'>
-          <div className="">
-            <h3 className="text-2xl">ジャンルから検索</h3>
-            <p>
-              製品の種類から検索することができます。
-            </p>
-            <SearchfromGenre />
-          </div>
-        </div>
-      </section>
-      <section className="flex flex-row">
-        <div className="hidden md:block md:basis-1/3 p-8 border">
-          <h3 className="text-2xl">ジャンルから検索</h3>
-          <p>
-            製品の種類から検索することができます。
-          </p>
-          <SearchfromGenre />
-        </div>
-        <div className="basis-1/2 md:basis-1/3 p-8 border">
-          <h3 className="text-2xl">気分・シーンから検索</h3>
-          <p>
-            気分やシーンに合わせてお茶を検索することができます。
-          </p>
-          <SearchfromFeel />
-        </div>
-        <div className="basis-1/2 md:basis-1/3 p-8 border">
-          <h3 className="text-2xl">香りや味から検索</h3>
-          <p className="p-2">
-            お茶の香りや味から検索することができます。
-          </p>
-          <SearchfromTaste />
-        </div>
-      </section >
-
-      {/*スマホ版の表示*/}
-
     </>
 
   );

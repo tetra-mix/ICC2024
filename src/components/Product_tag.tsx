@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getAllProducts } from '../firebase/strorage';
-import { productI } from '../types/products';
 
 export const ProductTag = () => {
     const [products, setProducts] = useState<productI[]>([]);

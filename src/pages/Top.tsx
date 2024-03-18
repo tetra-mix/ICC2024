@@ -3,20 +3,27 @@ import Base from '../components/Base';
 import { ProductTag } from "../components/Product_tag";
 import { useContext } from 'react';
 import { UserContext } from '../components/UserContext';
-
+import { useNavigate } from 'react-router-dom';
 function Top() {
 
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <>
-      <Base />
-      <section className='m-10'>
-        <h3 className={styles.title}>商品一覧</h3>
-        <p className='p-5 font-bold'>クリック/タップで詳細ページに移動します。</p>
-        {
-          <ProductTag />
-        }
+      <Base text={"さあ、新しい出会いへ。"} image_={true} />
+      <section className='m-10 text-lg'>
+        <p className='pb-10'>
+          いらっしゃい！<br />
+          TEA茶erは新たなお茶に出会えるサービスです。
+        </p>
+        <p className='pb-10'>
+          ここでは全国各地のお茶、和菓子を購入できます。ここだけのお得なセットも...?
+        </p>
+        <p className='pb-10'>
+          普段味わうことのできないお茶たちでゆっくり休んでいきましょう！
+        </p>
+        <button onClick={() => { navigate('/Tea') }} className="w-full bg-tea-600 text-black border-0 rounded-md hover:bg-tea-100 hover:text-black p-2 mr-2">始める</button>
       </section>
     </>
   )
