@@ -2,30 +2,57 @@ import { db } from './config';
 import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 
-import { user } from '../types/user';
+export default class AppUser {
+    uid: string = "";
+    name: string = "";
+    bought_sets: number[] = [];
+    answered_sets: number[] = [];
+    user: User;
+    constructor(user: User, name?: string, _new: boolean = false) {
+        this.uid = user.uid;
+        this.user = user;
+        if(name) {
+            this.name = name;
+        }
+        if (_new) {
+            this.uploadUser();
+        }else{
+            this.getUser();
+        }
+    }
 
-export const uploadUserData = async (currentuser: User, data: user) => {
-    const userRef = doc(db, "users", currentuser.uid);
-    await setDoc(userRef, {
-        ...data
-    });
-}
-
-export const getUserData = async (currentuser: User) => {
-    const docRef = doc(db, "users", currentuser.uid);
-    const data = await getDoc(docRef);
-    console.log(data);
-    return data.data();
-}
-
-export const updateUserData = async (currentuser: User, data: user) => {
-    const userRef = doc(db, "users", currentuser.uid);
-    try {
-        await updateDoc(userRef, {
-            ...data
+    async uploadUser() {
+        const userRef = doc(db, "users", this.uid);
+        await setDoc(userRef, {
+            name: this.name,
+            bought_sets: this.bought_sets,
+            answered_sets: this.answered_sets
         });
-        console.log("Document successfully updated!");
-    } catch (error) {
-        console.log(error);
+    }
+
+    async getUser() {
+        const docRef = doc(db, "users", this.uid);
+        const data = await getDoc(docRef);
+        console.log(data);
+
+        if (data.exists()) {
+            this.name = data.data().name;
+            this.answered_sets = data.data().answered_sets;
+            this.bought_sets = data.data().bought_sets;
+        }
+    }
+
+    async updateUser() {
+        const userRef = doc(db, "users", this.uid);
+        try {
+            await updateDoc(userRef, {
+                name: this.name,
+                bought_sets: this.bought_sets,
+                answered_sets: this.answered_sets
+            });
+            console.log("Document successfully updated!");
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

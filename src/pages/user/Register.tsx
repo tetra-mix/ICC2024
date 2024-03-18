@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login_email, /*login_google*/ } from '../firebase/auth';
+import { register, /*login_google*/ } from '../../firebase/auth';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
     const [email, setEmail] = useState<string>('');
+    const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            await login_email(email, password);
+            await register(name, email, password);
             alert('ログイン成功');
             navigate('/');
             // ログイン成功時の処理
@@ -27,7 +28,7 @@ const Login: React.FC = () => {
     const handleGoogleLogin = async () => {
         try {
             await login_google();
-            alert('ログイン成功');
+            alert('登録成功');
             navigate('/');
         } catch (error) {
             // エラー処理
@@ -47,9 +48,22 @@ const Login: React.FC = () => {
                 }}
             >
                 <Typography component="h1" variant="h5">
-                    ログイン
+                    新規登録
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="ニックネーム/名前"
+                        name="name"
+                        autoComplete="name"
+                        autoFocus
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -82,7 +96,7 @@ const Login: React.FC = () => {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        ログイン
+                        新規登録登録
                     </Button>
                     <Button
                         type="button"
@@ -99,5 +113,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
-
+export default Register;

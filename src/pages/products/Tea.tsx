@@ -6,11 +6,11 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
-import { uploadImageToStorage } from '../firebase/strorage';
-import { product } from "../types/products";
+import Tea from '../../firebase/registerTea';
 
-export default function Top() {
+export default function TeaRegister() {
     const [file, setFile] = React.useState<File | null>(null);
+    const [id, setID] = React.useState<number>();
     const [title, setTitle] = React.useState<string>();
     const [price, setPrice] = React.useState<number>();
     const [kind, setKind] = React.useState<string>();
@@ -19,46 +19,9 @@ export default function Top() {
 
     const RegisterClicked = () => {
         console.log(file, title, price, kind, description);
-        let d = new Date()
-        let year = d.getFullYear();
-        let month = d.getMonth();
-        let day = d.getDate();
-        let sec = d.getSeconds();
-        let msec = d.getMilliseconds();
-        let id: number = Number(String(year) + String(month) + String(day) + String(sec) + String(msec))
-
-        if (file && title && price && kind && description) {
-
-            const product: product = {
-                id: id,
-                title: title,
-                kind: kind,
-                price: price,
-                description: description,
-                questionnaire: {
-                    small: [],
-                    taste: [],
-                    feel: [],
-                    health: [],
-                    comment: []
-                
-                },
-                data: {
-                    small: 0,
-                    taste: 0,
-                    feel: 0,
-                    when: 0
-                }
-            };
-
-            try {
-                uploadImageToStorage(file, product);
-                console.log("商品がアップロードされました。");
-                alert("商品がアップロードされました。");
-            } catch (error) {
-                console.error("アップロードエラー: ", error);
-                alert("アップロードエラー: " + error);
-            }
+        if (id && file && title && price && kind && description) {
+            const tea = new Tea(id, title, price, kind, description);
+            tea.upload(file).then(() => { alert("登録完了") }).catch((e) => { alert(e) });
         }
     }
 
@@ -101,6 +64,17 @@ export default function Top() {
                     </Grid>
                     <Grid item xs={6}>
                         <input type="file" onChange={handleFileChange} />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            required
+                            id="ID"
+                            label="ID"
+                            sx={{ width: 150 }}
+                            onChange={(e) => {
+                                setID(Number(e.target.value))
+                            }}
+                        />
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
@@ -148,7 +122,7 @@ export default function Top() {
                             }}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                         <Button onClick={RegisterClicked} sx={{ width: 150 }} variant="contained">登録 -Register-</Button>
                     </Grid>
                 </Grid>

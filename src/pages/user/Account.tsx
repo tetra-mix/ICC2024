@@ -1,36 +1,19 @@
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import styles from '../scss/app.module.scss'
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { AuthState, logout } from '../firebase/auth';
-import { User } from 'firebase/auth';
-import { DocumentData } from 'firebase/firestore';
-import { getUserData } from '../firebase/user';
+import { useContext, useEffect, useState } from 'react';
+import { AuthState, logout } from '../../firebase/auth';
+import { UserContext } from '../../components/UserContext';
+import AppUser from '../../firebase/user';
 
 export default function Account() {
     const navigate = useNavigate()
-
-    const [currentUser, setCurrentUser] = useState<User>()
-    const [userData, setUserData] = useState<DocumentData | null>(null)
-
-    useEffect(() => {
-        const unsubscribe = AuthState((user) => 
-        {   
-            setCurrentUser(user);
-        });
-        return () => {
-            unsubscribe;
-        }
-    }, [])
+    const { user } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     useEffect(() => {
-        if (currentUser) {
-            getUserData(currentUser).then((data) => {
-                if (data)
-                    setUserData(data);
-            });
-        }
-    }, [currentUser])
+        
+    }, []);
 
     return (
         <>

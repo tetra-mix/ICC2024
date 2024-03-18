@@ -3,12 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { AuthState } from '../firebase/auth';
 import Header from '../components/Header';
-import Questionnaire from '../components/ Questionnaire';
-import { getUserData } from '../firebase/user';
+import Questionnaire from '../components/Questionnaire';
 import { updataUser } from '../firebase/evaluate';
 import { User } from 'firebase/auth';
-import { productI } from "../types/products";
-import { user } from "../types/user";
 
 function Product() {
     const [boolBought, setBoolBought] = useState(false);
