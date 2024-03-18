@@ -15,7 +15,7 @@ export const login = async (email: string, password: string) => {
 export const register = async (name: string, email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = new AppUser(userCredential.user, name, true);
+    const user = new AppUser(userCredential.user, email, name, true);
     return user;
   } catch (error) {
     throw error;

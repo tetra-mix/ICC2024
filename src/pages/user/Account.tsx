@@ -1,20 +1,13 @@
 import Header from '../../components/Header';
 import styles from '../scss/app.module.scss'
 import { useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import { AuthState, logout } from '../../firebase/auth';
+import { useContext } from 'react';
+import { logout } from '../../firebase/auth';
 import { UserContext } from '../../components/UserContext';
-import AppUser from '../../firebase/user';
-
 export default function Account() {
     const navigate = useNavigate()
     const { user } = useContext(UserContext);
-    const { setUser } = useContext(UserContext);
-
-    useEffect(() => {
-        
-    }, []);
-
+    
     return (
         <>
             <Header />
@@ -24,8 +17,8 @@ export default function Account() {
                     <div><p>ユーザー名</p></div>
                     <div><p>メールアドレス</p></div>
                     <div><p>パスワード</p></div>
-                    <div><p>{userData?.name}</p></div>
-                    <div><p>{currentUser?.email}</p></div>
+                    <div><p>{user?.name}</p></div>
+                    <div><p>{user?.email}</p></div>
                     <div><p className='text-base'>表示されません。変更は「編集ボタン」から</p></div>
                     <div><button onClick={() => { }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">編集</button></div>
                     <div><button onClick={() => { }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">編集</button></div>

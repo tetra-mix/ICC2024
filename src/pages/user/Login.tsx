@@ -5,24 +5,26 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useContext } from 'react';
+import { UserContext } from '../../components/UserContext';
+import { login } from '../../firebase/auth';
 
 const Login: React.FC = () => {
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            await (email, password);
-            alert('ログイン成功');
-            navigate('/');
-            // ログイン成功時の処理
-        } catch (error) {
-            // エラー処理
+    const handleSubmit = () => {
+        login(email, password).then((user) => {
+            setUser(user, () => {
+                alert('ログイン成功');
+                navigate('/');
+            });
+        }).catch((error) => {
             alert(error);
-        }
+        });
     };
-    
+
     return (
         <Container component="main" maxWidth="xs">
             <Box
@@ -68,6 +70,7 @@ const Login: React.FC = () => {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
+                        onClick={() => handleSubmit()}
                     >
                         ログイン
                     </Button>

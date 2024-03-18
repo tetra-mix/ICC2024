@@ -4,19 +4,21 @@ import { User } from 'firebase/auth';
 
 export default class AppUser {
     uid: string = "";
+    email: string = "";
     name: string = "";
     bought_sets: number[] = [];
     answered_sets: number[] = [];
     user: User;
-    constructor(user: User, name?: string, _new: boolean = false) {
+    constructor(user: User, email?: string, name?: string, _new: boolean = false) {
         this.uid = user.uid;
+        if (email) this.email = email;
         this.user = user;
-        if(name) {
+        if (name) {
             this.name = name;
         }
         if (_new) {
             this.uploadUser();
-        }else{
+        } else {
             this.getUser();
         }
     }
@@ -25,6 +27,7 @@ export default class AppUser {
         const userRef = doc(db, "users", this.uid);
         await setDoc(userRef, {
             name: this.name,
+            email: this.email,
             bought_sets: this.bought_sets,
             answered_sets: this.answered_sets
         });
@@ -37,6 +40,7 @@ export default class AppUser {
 
         if (data.exists()) {
             this.name = data.data().name;
+            this.email = data.data().email;
             this.answered_sets = data.data().answered_sets;
             this.bought_sets = data.data().bought_sets;
         }
@@ -47,6 +51,7 @@ export default class AppUser {
         try {
             await updateDoc(userRef, {
                 name: this.name,
+                email: this.email,
                 bought_sets: this.bought_sets,
                 answered_sets: this.answered_sets
             });

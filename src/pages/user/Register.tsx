@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../components/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { register, /*login_google*/ } from '../../firebase/auth';
+import { register } from '../../firebase/auth';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -8,34 +9,21 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 const Register: React.FC = () => {
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            await register(name, email, password);
-            alert('ログイン成功');
-            navigate('/');
-            // ログイン成功時の処理
-        } catch (error) {
-            // エラー処理
+    const handleSubmit = () => {
+        register(name, email, password).then((user) => {
+            setUser(user, () => {
+                alert('登録成功');
+                navigate('/');
+            });
+        }).catch((error) => {
             alert(error);
-        }
+        });
     };
-    /*
-    const handleGoogleLogin = async () => {
-        try {
-            await login_google();
-            alert('登録成功');
-            navigate('/');
-        } catch (error) {
-            // エラー処理
-            alert(error);
-        }
-    };
-    */
 
     return (
         <Container component="main" maxWidth="xs">
@@ -95,6 +83,7 @@ const Register: React.FC = () => {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
+                        onClick={() => handleSubmit()}
                     >
                         新規登録登録
                     </Button>

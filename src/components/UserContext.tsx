@@ -8,7 +8,6 @@ type Props = {
 type UserContextType = {
     user: AppUser | null;
     setUser: (user: AppUser, callback:() => void) => void;
-    
 }
 
 export const UserContext = createContext<UserContextType>({
