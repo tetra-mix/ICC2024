@@ -36,7 +36,7 @@ export default function TeaRegister() {
             <AppBar position="static" sx={{ width: '100%', height: '10%' }}>
                 <Container maxWidth="xl">
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        商品データベース -Ise Database-
+                        商品データベース -お茶-
                     </Typography>
                 </Container>
             </AppBar>

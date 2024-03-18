@@ -1,5 +1,5 @@
 import Header from '../../components/Header';
-import styles from '../scss/app.module.scss'
+import styles from '../../scss/app.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { logout } from '../../firebase/auth';
