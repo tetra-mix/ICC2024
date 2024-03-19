@@ -1,7 +1,7 @@
 import tea from '../assets/tea.png';
 import { useNavigate } from 'react-router-dom';
 
-export default function TeaTag () {
+export default function TeaSets () {
     const navigate = useNavigate();
 
     return (

@@ -23,7 +23,14 @@ function Top() {
         <p className='pb-10'>
           普段味わうことのできないお茶たちでゆっくり休んでいきましょう！
         </p>
-        <button onClick={() => { navigate('/Tea') }} className="w-full bg-tea-600 text-black border-0 rounded-md hover:bg-tea-100 hover:text-black p-2 mr-2">始める</button>
+        <div className="grid gap-2 grid-cols-2">
+          <div>
+            <button onClick={() => { navigate('/Tea') }} className="w-full bg-tea-600 text-black border-0 rounded-md hover:bg-tea-100 hover:text-black p-2 mr-2">お茶</button>
+          </div>
+          <div>
+            <button onClick={() => { navigate('/Sweets') }} className="w-full bg-tea-600 text-black border-0 rounded-md hover:bg-tea-100 hover:text-black p-2 mr-2">お菓子</button>
+          </div>
+        </div>
       </section>
     </>
   )

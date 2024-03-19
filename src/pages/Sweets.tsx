@@ -1,6 +1,7 @@
-import styles from '../scss/app.module.scss';
 import Base from '../components/Base';
 import SweetsTag from '../components/SweetsTag.tsx';
+import Search from '../components/TeaSearch.tsx';
+import TeaTag from '../components/TeaTag.tsx';
 import Subtitle from '../components/Subtitle';
 import { useContext } from 'react';
 import { UserContext } from '../components/UserContext';
@@ -12,10 +13,14 @@ function Sweets() {
   return (
     <>
       <Base text={"お菓子"} subtext={"このページでは、全国各地のお菓子を購入することができます。ごゆっくり。"} image_={false} />
-      <section className='m-10'>
+      <section className='pt-5'>
         <Subtitle text={"絞り込み"} />
-        <h3 className={styles.title}>商品一覧</h3>
-        <p className='p-5 font-bold'>クリック/タップで詳細ページに移動します。</p>
+        <Search />
+        <Subtitle text={"おすすめ"} />
+        
+        <Subtitle text={"セット"} />
+
+        <Subtitle text={"一覧"} />
         <SweetsTag />
       </section>
     </>

@@ -6,7 +6,7 @@ type nn = {
 }
 
 
-export default function SearchfromTaste() {
+export default function TeaSearchfromTaste() {
 
   const [boolBox, setBoolBox] = useState(false);
   const [box, setBox] = useState<nn>({ smell: 0, taste: 0 });
@@ -21,7 +21,7 @@ export default function SearchfromTaste() {
   }
 
   return (
-    <div className='grid grid-cols-4 sm:gap-4 '>
+    <div className='grid grid-cols-4 sm:gap-4 text-sm'>
       <div className="col-span-3">
         <div className="relative inline-block text-left w-full">
           <button onClick={handleClick} type="button" className="w-full inline-flex gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -35,7 +35,7 @@ export default function SearchfromTaste() {
                   <p>選択</p>
                 </>
             }
-            <svg className="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
             </svg>
           </button>

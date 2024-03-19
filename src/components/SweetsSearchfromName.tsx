@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SearchfromFeel() {
+export default function SweetsSearchfromFeel() {
     const [String, setString] = useState("");
 
     const handleClick = () => {
@@ -8,7 +8,7 @@ export default function SearchfromFeel() {
     }
 
     return (
-        <div className='grid grid-cols-4 sm:gap-4 '>
+        <div className='grid grid-cols-4 sm:gap-4 text-sm'>
             <div className="col-span-3">
                 <div className="relative inline-block text-left w-full">
                     <input onChange={(e) => {setString(e.target.value)}} className="border-2 border-tea-100 rounded-md w-full p-2" type="text" />
