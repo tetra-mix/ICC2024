@@ -1,11 +1,11 @@
 import styles from '../scss/app.module.scss'
 import Base from '../components/Base';
-import { ProductTag } from "../components/Product_tag";
+import TeaTag from '../components/TeaTag.tsx';
 import Subtitle from '../components/Subtitle';
 import { useContext } from 'react';
 import { UserContext } from '../components/UserContext';
 
-function Top() {
+function Tea() {
 
   const { user } = useContext(UserContext);
 
@@ -15,9 +15,7 @@ function Top() {
       <section className='pt-5'>
         <Subtitle text={"絞り込み"} />
         <p className='p-5 font-bold'>クリック/タップで詳細ページに移動します。</p>
-        {
-          //  <ProductTag />
-        }
+        <TeaTag />
         <Subtitle text={"おすすめ"} />
         <Subtitle text={"セット"} />
       </section>
@@ -25,4 +23,4 @@ function Top() {
   )
 }
 
-export default Top
+export default Tea;
