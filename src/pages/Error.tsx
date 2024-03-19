@@ -4,7 +4,7 @@ function Error() {
     return (
         <>
             <Header />
-            <section className="p-10 bg-tea-10">
+            <section className="p-10 bg-tea-0">
                 <h1 className="p-5 m-5 text-black text-4xl">
                     エラーが発生しました。<br />
                     再度お試しください。

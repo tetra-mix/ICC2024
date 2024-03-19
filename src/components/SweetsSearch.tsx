@@ -1,6 +1,6 @@
 import SweetsSearchfromName from './SweetsSearchfromName';
 import SweetsSearchfromGenre from './SweetsSearchfromGenre';
-import SweetsSearchfromFeel from './SweetsSearchfromFeel';
+import SweetsSearchfromTexture from './SweetsSearchfromTexture';
 import SweetsSearchfromTaste from './SweetsSearchfromTaste';
 
 
@@ -12,7 +12,7 @@ export default function SweetsSearch() {
         <div className="p-2 border basis-1/2 md:basis-full">
           <h3 className="text-md font-bold md:text-3xl">名前から検索</h3>
           <p className="text-sm">
-            お茶の品種名を入力して検索することができます。
+            お菓子の品種名を入力して検索することができます。
           </p>
           <SweetsSearchfromName />
         </div>
@@ -35,18 +35,18 @@ export default function SweetsSearch() {
           <SweetsSearchfromGenre />
         </div>
         <div className="basis-1/2 md:basis-1/3 p-2 border">
-          <h3 className="text-md font-bold">気分・シーンから検索</h3>
+          <h3 className="text-md font-bold">味から検索</h3>
           <p className="text-sm">
-            気分やシーンに合わせてお茶を検索することができます。
-          </p>
-          <SweetsSearchfromFeel />
-        </div>
-        <div className="basis-1/2 md:basis-1/3 p-2 border">
-          <h3 className="text-md font-bold">香りや味から検索</h3>
-          <p className="text-sm">
-            お茶の香りや味から検索することができます。
+            お菓子の味で検索することができます。
           </p>
           <SweetsSearchfromTaste />
+        </div>
+        <div className="basis-1/2 md:basis-1/3 p-2 border">
+          <h3 className="text-md font-bold">食感から検索</h3>
+          <p className="text-sm">
+            お菓子の食感から検索することができます。
+          </p>
+          <SweetsSearchfromTexture />
         </div>
       </section >
       {/*スマホ版の表示*/}

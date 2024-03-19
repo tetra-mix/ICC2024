@@ -11,7 +11,7 @@ export default function Account() {
     return (
         <>
             <Header />
-            <section className="p-10 bg-tea-10">
+            <section className="p-10 bg-tea-0">
                 <h3 className={styles.title}>アカウント情報</h3>
                 <div className="m-5 p-5s lg:text-2xl sm:text-lg grid grid-rows-3 grid-flow-col gap-4">
                     <div><p>ユーザー名</p></div>

@@ -8,7 +8,7 @@ export default function TeaTag () {
         <div className='grid grid-cols-2 gap-2'>
             <div onClick={ () => navigate("/item/tea/") } className="rounded-md border-black m-2 p-2 bg-tea-20 border-2 border-tea-600">
                 <h1 className="text-md">商品名: <span className='text-xl font-bold'>伊勢茶</span></h1>
-                <h3 className="text-md">値段: 10000 円</h3>
+                <h3 className="text-md">値段: 1000 円</h3>
                 <h3 className="text-md">種類: 煎茶</h3>
                 <img src={tea} />
                 <h3 className="text-md">説明:</h3>

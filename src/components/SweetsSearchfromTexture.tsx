@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-export default function SweetsSearchfromTaste() {
+export default function SweetsSearchfromTexture() {
 
-  const [boolTasteBox, setBoolTasteBox] = useState(false);
-  const [TasteBox, setTasteBox] = useState("選択");
+  const [boolTextureBox, setBoolTextureBox] = useState(false);
+  const [TextureBox, setTextureBox] = useState("選択");
 
   const handleClick = () => {
-    setBoolTasteBox(!boolTasteBox)
+    setBoolTextureBox(!boolTextureBox)
   }
 
-  const setTaste = (Taste: string) => {
-    setTasteBox(Taste);
-    setBoolTasteBox(false);
+  const setTexture = (Texture: string) => {
+    setTextureBox(Texture);
+    setBoolTextureBox(false);
   }
 
   return (
@@ -19,19 +19,18 @@ export default function SweetsSearchfromTaste() {
     <div className='grid grid-cols-4 sm:gap-4 text-sm'>
       <div className="col-span-3 relative inline-block text-left w-full">
         <button onClick={handleClick} type="button" className="inline-flex w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
-          {TasteBox}
+          {TextureBox}
           <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
           </svg>
         </button>
         {
-          boolTasteBox &&
+          boolTextureBox &&
           <div className='absolute w-full z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-            <span onClick={() => { setTaste("甘い"); }} className='text-gray-700 block px-4 py-2 text-sm'>甘い</span>
-            <span onClick={() => { setTaste("苦い"); }} className='text-gray-700 block px-4 py-2 text-sm'>苦い</span>
-            <span onClick={() => { setTaste("酸っぱい"); }} className='text-gray-700 block px-4 py-2 text-sm'>酸っぱい</span>
-            <span onClick={() => { setTaste("しょっぱい"); }} className='text-gray-700 block px-4 py-2 text-sm'>しょっぱい</span>
-            <span onClick={() => { setTaste("辛い"); }} className='text-gray-700 block px-4 py-2 text-sm'>辛い</span>
+            <span onClick={() => { setTexture("しっとり"); }} className='text-gray-700 block px-4 py-2 text-sm'>しっとり</span>
+            <span onClick={() => { setTexture("さっぱり"); }} className='text-gray-700 block px-4 py-2 text-sm'>さっぱり</span>
+            <span onClick={() => { setTexture("もちもち"); }} className='text-gray-700 block px-4 py-2 text-sm'>もちもち</span>
+            <span onClick={() => { setTexture("濃厚"); }} className='text-gray-700 block px-4 py-2 text-sm'>濃厚</span>
           </div>
         }
       </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SweetsSearchfromGenre() {
+export default function TeaSearchfromGenre() {
 
   const [boolGenreBox, setBoolGenreBox] = useState(false);
   const [genreBox, setGenreBox] = useState("選択");
@@ -27,14 +27,15 @@ export default function SweetsSearchfromGenre() {
         {
           boolGenreBox &&
           <div className='absolute w-full z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-            <span onClick={() => { setGenre("煎茶"); }} className='text-gray-700 block px-4 py-2 text-sm'>煎茶</span>
-            <span onClick={() => { setGenre("深蒸し煎茶"); }} className='text-gray-700 block px-4 py-2 text-sm'>深蒸し煎茶</span>
-            <span onClick={() => { setGenre("かぶせ茶"); }} className='text-gray-700 block px-4 py-2 text-sm'>かぶせ茶</span>
-            <span onClick={() => { setGenre("抹茶"); }} className='text-gray-700 block px-4 py-2 text-sm'>抹茶</span>
-            <span onClick={() => { setGenre("紅茶"); }} className='text-gray-700 block px-4 py-2 text-sm'>紅茶</span>
-            <span onClick={() => { setGenre("その他"); }} className='text-gray-700 block px-4 py-2 text-sm'>その他</span>
-            <span onClick={() => { setGenre("ティーバック"); }} className='text-gray-700 block px-4 py-2 text-sm'>ティーバック</span>
-            <span onClick={() => { setGenre("セット"); }} className='text-gray-700 block px-4 py-2 text-sm'>セット</span>
+            <span onClick={() => { setGenre("スナック"); }} className='text-gray-700 block px-4 py-2 text-sm'>スナック</span>
+            <span onClick={() => { setGenre("ゼリー"); }} className='text-gray-700 block px-4 py-2 text-sm'>ゼリー</span>
+            <span onClick={() => { setGenre("プリン"); }} className='text-gray-700 block px-4 py-2 text-sm'>プリン</span>
+            <span onClick={() => { setGenre("ケーキ"); }} className='text-gray-700 block px-4 py-2 text-sm'>ケーキ</span>
+            <span onClick={() => { setGenre("クッキー"); }} className='text-gray-700 block px-4 py-2 text-sm'>クッキー</span>
+            <span onClick={() => { setGenre("カステラ"); }} className='text-gray-700 block px-4 py-2 text-sm'>カステラ</span>
+            <span onClick={() => { setGenre("羊羹"); }} className='text-gray-700 block px-4 py-2 text-sm'>羊羹</span>
+            <span onClick={() => { setGenre("饅頭"); }} className='text-gray-700 block px-4 py-2 text-sm'>饅頭</span>
+            <span onClick={() => { setGenre("団子"); }} className='text-gray-700 block px-4 py-2 text-sm'>団子</span>
           </div>
         }
       </div>

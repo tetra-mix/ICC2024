@@ -16,13 +16,13 @@ function Header() {
                     user
                         ?
                         <>
-                            <button onClick={() => { navigate('/account') }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">アカウント</button>
+                            <button onClick={() => { navigate('/user/account') }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">アカウント</button>
                             <button onClick={() => { logout(); alert("ログアウトしました。"); }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログアウト</button>
                         </>
                         :
                         <>
-                            <button onClick={() => { navigate('/login') }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button>
-                            <button onClick={() => { navigate('/register') }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">新規登録</button>
+                            <button onClick={() => { navigate('/user/login') }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">ログイン</button>
+                            <button onClick={() => { navigate('/user/register') }} className="bg-white text-black border-0 rounded-md hover:bg-tea-100 hover:text-white p-2 mr-2">新規登録</button>
                         </>
                 }
             </div>

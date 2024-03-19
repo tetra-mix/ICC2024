@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         tea: {
+          0:   '#fafffa',
           100: '#CDEAA7',
           200: '#D0F2C4',
           300: '#CDE5B0',

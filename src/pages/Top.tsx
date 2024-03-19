@@ -12,7 +12,7 @@ function Top() {
   return (
     <>
       <Base text={"さあ、新しい出会いへ。"} image_={true} />
-      <section className='m-10 text-lg'>
+      <section className='m-10 text-lg bg-tea-0'>
         <p className='pb-10'>
           いらっしゃい！<br />
           TEA茶erは新たなお茶に出会えるサービスです。
